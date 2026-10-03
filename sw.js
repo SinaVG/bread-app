@@ -1,5 +1,5 @@
 /* Bread — service worker. Bump VERSION whenever app files change. */
-const VERSION = 'bread-v1.0.0';
+const VERSION = 'bread-v1.1.0';
 const SHELL = [
   './',
   './index.html',

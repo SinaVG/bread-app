@@ -3,7 +3,7 @@
    recipes/bakes in localStorage, photos in IndexedDB. */
 'use strict';
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 const STORE_KEY = 'bread.v1';
 const REPO_URL = 'https://github.com/SinaVG/bread-app';
 
@@ -843,7 +843,7 @@ function viewMore() {
     <div class="card stack">
       <div class="card-kicker">Appearance</div>
       <div class="row wrap" style="gap:6px">
-        ${['auto', 'light', 'dark'].map((t) => `<button type="button" class="chip plain ${(state.settings.theme || 'auto') === t ? 'active' : ''}" data-action="theme" data-theme="${t}">${t[0].toUpperCase() + t.slice(1)}</button>`).join('')}
+        ${['light', 'dark', 'auto'].map((t) => `<button type="button" class="chip plain ${(state.settings.theme || 'light') === t ? 'active' : ''}" data-action="theme" data-theme="${t}">${t === 'auto' ? 'Match phone' : t[0].toUpperCase() + t.slice(1)}</button>`).join('')}
       </div>
     </div>
     <div class="card stack">
@@ -882,9 +882,15 @@ function viewMore() {
 }
 
 function applyTheme() {
-  const t = state.settings.theme || 'auto';
+  const t = state.settings.theme || 'light';
   if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t);
+  const dark = t === 'dark' || (t === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', dark ? '#1f1a15' : '#fcf8f1');
+  const cs = document.querySelector('meta[name="color-scheme"]');
+  if (cs) cs.setAttribute('content', t === 'auto' ? 'light dark' : t);
 }
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
 
 async function exportBackup(mode) {
   toast('Preparing backup…');

@@ -1,26 +1,27 @@
 /* Bread — styles. Warm parchment-and-crust palette, mobile first. */
 
 :root {
-  --bg: #f5ead8;
-  --surface: #fdf7ec;
-  --surface-2: #ebddc5;
-  --text: #201e1d;
+  --bg: #fcf8f1;
+  --surface: #ffffff;
+  --surface-2: #f3ebdf;
+  --text: #22201d;
   --muted: rgba(32, 30, 29, 0.62);
   --faint: rgba(32, 30, 29, 0.08);
   --divider: rgba(32, 30, 29, 0.14);
   --accent: #c67139;
   --accent-strong: #a85a26;
-  --accent-soft: #fbe3d1;
+  --accent-soft: #fbe9dc;
   --accent-2: #7a8a5e;
   --accent-2-soft: #e4ebd3;
   --danger: #b4432f;
   --danger-soft: #f8dcd6;
-  --shadow-sm: 0 1px 2px rgba(46, 43, 37, 0.12);
-  --shadow-md: 0 4px 14px rgba(46, 43, 37, 0.14);
+  --shadow-sm: 0 1px 3px rgba(60, 45, 30, 0.08), 0 0 0 1px rgba(60, 45, 30, 0.04);
+  --shadow-md: 0 4px 14px rgba(60, 45, 30, 0.12);
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --font-heading: "Caprasimo", Georgia, "Times New Roman", serif;
+  --font-heading: "Libre Baskerville", Baskerville, Georgia, "Times New Roman", serif;
+  --font-heading-weight: 700;
   --font-body: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --tabbar-h: 62px;
   color-scheme: light;
@@ -79,7 +80,7 @@ body {
   overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
 }
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); line-height: 1.2; margin: 0; letter-spacing: 0; }
 p { margin: 0 0 10px; }
 a { color: var(--accent); }
 button { font: inherit; color: inherit; }
@@ -100,7 +101,7 @@ input, select, textarea { font: inherit; color: inherit; }
   max-width: 640px; margin: 0 auto; min-height: 56px;
   display: flex; align-items: center; gap: 6px; padding: 8px 12px 6px;
 }
-.topbar-title { font-size: 26px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 4px; }
+.topbar-title { font-size: 22px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 4px; }
 .topbar-actions { display: flex; gap: 4px; }
 .view {
   flex: 1; width: 100%; max-width: 640px; margin: 0 auto;
@@ -109,7 +110,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
   display: flex; justify-content: center;
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
   border-top: 1px solid var(--divider);
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -149,10 +150,10 @@ input, select, textarea { font: inherit; color: inherit; }
 /* ---------- Cards ---------- */
 .card {
   background: var(--surface); border-radius: var(--radius-lg);
-  padding: 16px; box-shadow: var(--shadow-sm); margin-bottom: 14px;
+  padding: 16px; box-shadow: var(--shadow-sm); margin-bottom: 14px; border: 1px solid var(--faint);
 }
-.card h2 { font-size: 20px; margin-bottom: 8px; }
-.card h3 { font-size: 17px; }
+.card h2 { font-size: 18px; margin-bottom: 8px; }
+.card h3 { font-size: 16px; }
 .card-kicker { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
 .row { display: flex; align-items: center; gap: 10px; }
 .row.between { justify-content: space-between; }
@@ -169,10 +170,10 @@ input, select, textarea { font: inherit; color: inherit; }
 .item {
   display: block; text-decoration: none; color: inherit;
   background: var(--surface); border-radius: var(--radius-md); padding: 14px 16px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm); border: 1px solid var(--faint);
 }
 .item:active { background: var(--surface-2); }
-.item-title { font-family: var(--font-heading); font-size: 19px; line-height: 1.2; }
+.item-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17px; line-height: 1.25; }
 .item-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
 .item-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .badge {
@@ -187,7 +188,7 @@ input, select, textarea { font: inherit; color: inherit; }
 
 /* hero */
 .hero { padding: 6px 4px 14px; }
-.hero h2 { font-size: 30px; margin-bottom: 4px; }
+.hero h2 { font-size: 26px; margin-bottom: 4px; }
 .hero .muted { font-size: 14px; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 
@@ -203,7 +204,7 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .stepper button:active { transform: scale(0.95); }
 .stepper input {
-  width: 92px; height: 52px; text-align: center; font-family: var(--font-heading); font-size: 30px;
+  width: 92px; height: 52px; text-align: center; font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 26px;
   border: 0; border-radius: 14px; background: var(--surface); color: var(--text);
 }
 .stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
@@ -220,7 +221,7 @@ input, select, textarea { font: inherit; color: inherit; }
 
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-top: 14px; }
 .stat { background: var(--surface); border-radius: 14px; padding: 10px 12px; }
-.stat .v { font-family: var(--font-heading); font-size: 22px; line-height: 1.1; }
+.stat .v { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 19px; line-height: 1.15; }
 .stat .k { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
 
 /* ---------- Tables ---------- */
@@ -315,7 +316,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: lin
 /* empty state */
 .empty { text-align: center; padding: 48px 16px; color: var(--muted); }
 .empty svg { width: 56px; height: 56px; margin-bottom: 10px; color: var(--accent); opacity: 0.8; }
-.empty h3 { font-size: 22px; color: var(--text); margin-bottom: 6px; }
+.empty h3 { font-size: 20px; color: var(--text); margin-bottom: 6px; }
 
 /* toast */
 .toast {
@@ -329,7 +330,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: lin
 
 /* section headers */
 .section-h { display: flex; align-items: baseline; justify-content: space-between; margin: 18px 4px 8px; }
-.section-h h2 { font-size: 20px; }
+.section-h h2 { font-size: 18px; }
 
 /* install banner */
 .banner {
