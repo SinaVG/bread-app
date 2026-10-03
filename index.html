@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bread</title>
+  <meta name="description" content="Scale bread recipes by loaf count, see baker's ratios, and document every bake.">
+  <meta name="theme-color" content="#f5ead8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f1a15" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Installable web app -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Bread">
+  <meta name="application-name" content="Bread">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="icon-btn back" id="backBtn" type="button" aria-label="Back" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="topbar-title" id="pageTitle">Bread</h1>
+        <div class="topbar-actions" id="topActions"></div>
+      </div>
+    </header>
+
+    <main id="view" class="view" aria-live="polite"></main>
+
+    <nav class="tabbar" aria-label="Main">
+      <a href="#/recipes" data-tab="recipes" class="tab">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H18a1 1 0 0 1 1 1v14.5a1.5 1.5 0 0 1-1.5 1.5H6.5A1.5 1.5 0 0 1 5 18.5v-14Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 7.5h7M8.5 11h7M8.5 14.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Recipes</span>
+      </a>
+      <a href="#/bakes" data-tab="bakes" class="tab">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5C4 7.9 7.6 5 12 5s8 2.9 8 6.5V17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 9.5l1.5-2M12 9l1.5-2M15.5 9.5l1.5-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Bakes</span>
+      </a>
+      <a href="#/more" data-tab="more" class="tab">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="18" cy="12" r="1.8" fill="currentColor"/></svg>
+        <span>More</span>
+      </a>
+    </nav>
+
+    <div id="toast" class="toast" role="status" hidden></div>
+    <div id="lightbox" class="lightbox" hidden>
+      <button class="lightbox-close icon-btn" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+      <img alt="Bake photo">
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

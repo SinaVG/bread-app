@@ -1,0 +1,17 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Python (icon generator)
+__pycache__/
+*.pyc
+
+# Local scratch
+node_modules/
+
+# Claude Code local dev-server config
+.claude/
